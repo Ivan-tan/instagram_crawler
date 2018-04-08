@@ -10,8 +10,9 @@ def crawl(alias, limit):
     count = 0
     all_dfs = []
     r = requests.get(base_url)
-    max_id = r.json()["graphql"]
-    posts = r.json()["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"]
+    if r.json()["graphql"]["user"]["is_private"]:
+        print("Private account!")
+        sys.exit(0)
     while count <= limit:
         if r.json()["graphql"]["user"]["edge_owner_to_timeline_media"]["page_info"]["has_next_page"]:
             max_id = r.json()["graphql"]["user"]["edge_owner_to_timeline_media"]["page_info"]["end_cursor"]
