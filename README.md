@@ -1,2 +1,6 @@
 # instagram_crawler
-Extracts posts from Instagram
+Simple Python script to extract posts from Instagram
+
+```
+python instagram_crawler.py <alias> <limit>
+```
